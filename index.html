@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CM CAFÉ - Home / Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-purple-logo: #9333ea;
+      --color-gold: #eab308;
+      --color-cyan: #5ce1e6;
+      --color-card-cyan: #a5f3fc;
+      --color-card-purple: #e9d5ff;
+      --color-card-blue: #bfdbfe;
+      --text-dark: #1f2937;
+      --bg-cream: #fdfbf7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--color-purple-logo);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links li a:hover {
+      color: var(--color-purple-logo);
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .header-icons svg {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid var(--color-gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 500px;
+      background-image: url('1ad3d6e0d61fb86c97852b8c52f8f73e.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 10%;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: var(--color-gold);
+      letter-spacing: 3px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-btn {
+      background-color: var(--color-cyan);
+      color: var(--color-purple-logo);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: lowercase;
+      padding: 0.6rem 2.5rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      width: fit-content;
+      margin-left: 10px;
+    }
+
+    .hero-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* Feature Cards */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      padding: 4rem 10%;
+    }
+
+    .feature-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .feature-card .card-bottom {
+      padding: 1.2rem;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-1 .card-bottom { background-color: var(--color-card-cyan); color: var(--text-dark); }
+    .card-2 .card-bottom { background-color: var(--color-card-purple); color: var(--text-dark); }
+    .card-3 .card-bottom { background-color: var(--color-card-blue); color: var(--text-dark); }
+
+    /* Welcome Section */
+    .welcome-section {
+      text-align: center;
+      padding: 1rem 5% 3rem;
+    }
+
+    .welcome-title {
+      font-family: 'Playfair Display', serif;
+      color: #3b82f6;
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .sub-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      flex-wrap: wrap;
+    }
+
+    .sub-nav li a:hover {
+      color: var(--color-purple-logo);
+    }
+
+    /* Product Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding: 0 10% 4rem 10%;
+    }
+
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .product-item img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+    }
+
+    .product-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-gold);
+    }
+
+    /* Masonry Gallery */
+    .gallery {
+      padding: 0 10% 4rem 10%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .gallery-row-1 {
+      height: 400px;
+    }
+
+    .gallery-row-2 {
+      height: 250px;
+    }
+
+    .large-sq {
+      flex: 2;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .stacked-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      height: 100%;
+    }
+
+    .stacked-col img {
+      flex: 1;
+      height: 50%;
+      border-radius: 8px;
+    }
+
+    .small-sq {
+      flex: 1;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    .wide-rect {
+      flex: 3;
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--bg-cream);
+      padding-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      padding: 0 10% 4rem 10%;
+    }
+
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: #6b7280;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--text-dark);
+    }
+
+    .newsletter p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1.2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.8rem;
+      border: 1px solid #d1d5db;
+      background: #e5e7eb;
+      outline: none;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .newsletter-form button {
+      background-color: var(--color-card-blue);
+      border: none;
+      padding: 0 1.5rem;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      transition: background-color 0.2s;
+    }
+    
+    .newsletter-form button:hover {
+        background-color: #93c5fd;
+    }
+
+    .social-dots {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .social-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .social-dot:hover {
+        background-color: var(--color-cyan);
+    }
+
+    .footer-bottom {
+      background-color: var(--color-cyan);
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      .gallery-row-1 {
+        height: 300px;
+      }
+      .gallery-row-2 {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        height: 350px;
+        align-items: center;
+        padding-left: 0;
+        text-align: center;
+      }
+      .hero-btn {
+        margin-left: 0;
+        margin: 0 auto;
+      }
+      .features {
+        grid-template-columns: 1fr;
+        padding: 2rem 5%;
+      }
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 5% 3rem 5%;
+      }
+      
+      /* Gallery Responsive Fixes */
+      .gallery {
+        padding: 0 5% 3rem 5%;
+      }
+      .gallery-row {
+        flex-direction: column;
+        height: auto;
+      }
+      .large-sq {
+        aspect-ratio: 1/1;
+        width: 100%;
+        height: auto;
+      }
+      .stacked-col {
+        flex-direction: row;
+        height: auto;
+      }
+      .stacked-col img {
+        height: auto;
+        aspect-ratio: 1/1;
+      }
+      .small-sq {
+        aspect-ratio: 1/1;
+        width: 100%;
+        height: auto;
+      }
+      .wide-rect {
+        aspect-ratio: 16/9;
+        width: 100%;
+        height: auto;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 0 5% 3rem 5%;
+      }
+      .newsletter-form {
+        max-width: 400px;
+        margin: 0 auto 1.5rem auto;
+      }
+      .social-dots {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .products {
+        grid-template-columns: 1fr;
+      }
+      .stacked-col {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">CMCAFÉ</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Menu</a></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="header-icons">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+      <img src="dump dog.jpg" alt="User Profile" class="user-avatar">
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">CM CAFÉ</h1>
+      <button class="hero-btn" onclick="window.location.href='order.html'">order</button>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="features">
+    <div class="feature-card card-1">
+      <img src="vibe2_0.jpg" alt="New Menu Arrivals">
+      <div class="card-bottom">NEW MENU ARRIVALS</div>
+    </div>
+    <div class="feature-card card-2">
+      <img src="download (21).jpg" alt="Fresh Coffee">
+      <div class="card-bottom">FRESH COFFEE</div>
+    </div>
+    <div class="feature-card card-3">
+      <img src="e990ce22cbd1b3cc51b098fecdfa4401.jpg" alt="Location">
+      <div class="card-bottom">LOCATION</div>
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h2 class="welcome-title">Welcome</h2>
+    <ul class="sub-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html">Menu</a></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="products">
+    <div class="product-item">
+      <img src="espresso_0.jpg" alt="Hot Espresso">
+      <h3 class="product-title">Hot Espresso</h3>
+      <span class="product-price">$3.00</span>
+    </div>
+    <div class="product-item">
+      <img src="pancake_0.jpg" alt="Black backpack">
+      <h3 class="product-title">Black backpack</h3>
+      <span class="product-price">$10.00</span>
+    </div>
+    <div class="product-item">
+      <img src="latte_0.jpg" alt="Iced Latte">
+      <h3 class="product-title">Iced Latte</h3>
+      <span class="product-price">$5.00</span>
+    </div>
+    <div class="product-item">
+      <img src="toast_0.jpg" alt="Toast">
+      <h3 class="product-title">Toast</h3>
+      <span class="product-price">$2.00</span>
+    </div>
+  </section>
+
+  <!-- Masonry Gallery -->
+  <section class="gallery">
+      <div class="gallery-row gallery-row-1">
+          <img src="447f1ba260fa645ea741042623ab3d70.jpg" alt="Bunny Pudding" class="large-sq">
+          <img src="coffee_0.jpg" alt="Lily Coffee" class="large-sq">
+          <div class="stacked-col">
+              <img src="tea_0.jpg" alt="Tea">
+              <img src="iced americano_0.jpg" alt="Iced Tea">
+          </div>
+      </div>
+      <div class="gallery-row gallery-row-2">
+          <img src="717fc7c1df45938a0964646ef2d833ea.jpg" alt="Mug Face" class="small-sq">
+          <img src="vibe1_0.jpg" alt="Croissants" class="wide-rect">
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-col">
+        <h4>INFORMATION</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Affiliate</a></li>
+          <li><a href="#">Responsibility</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CUSTOMER CARE</h4>
+        <ul>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shopping</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Track Orders</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>NEWSLETTER</h4>
+        <p>Subscribe to get daily news & more gif</p>
+        <div class="newsletter-form">
+          <input type="email" aria-label="Email address">
+          <button type="button"></button>
+        </div>
+        <div class="social-dots">
+          <div class="social-dot"></div>
+          <div class="social-dot"></div>
+          <div class="social-dot"></div>
+          <div class="social-dot"></div>
+          <div class="social-dot"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright © 2023 CM CAFÉ. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
